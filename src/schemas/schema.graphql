@@ -1,0 +1,41 @@
+type Query {
+    """Obtenemos información de los usuarios"""
+    users:[User!]!
+    """Proceso de logueo para el usuario registrado"""
+    login(email:String!,password:String!):ResultToken!
+    """Obtenemos nuestra información con el token"""
+    me:ResultUser!
+}
+
+type Mutation {
+    register(user:UserInput!):ResultUser!
+
+}
+
+input UserInput {
+    name:String!
+    lastname:String!
+    email:String!
+    password:String!
+}
+
+type ResultUser{
+    status:Boolean!
+    message:String!
+    user:User
+}
+
+type ResultToken{
+    status:Boolean!
+    message:String!
+    token:String
+}
+
+type User {
+    id:ID!
+    name:String!
+    lastname:String!
+    email:String!
+    password:String
+    registerDate:String!
+}
